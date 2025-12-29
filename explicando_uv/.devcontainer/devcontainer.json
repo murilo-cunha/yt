@@ -1,0 +1,8 @@
+{
+  "name": "UV Demo",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "postCreateCommand": "apt-get update && apt-get install -y curl",
+  "containerEnv": {
+    "SHELL": "/bin/bash"
+  }
+}
