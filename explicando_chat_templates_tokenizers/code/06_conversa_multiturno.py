@@ -2,6 +2,8 @@
 # requires-python = ">=3.14"
 # dependencies = [
 #     "transformers>=4.46.0",
+#     "torch>=2.0.0",
+#     "accelerate>=1.12.0",
 # ]
 # ///
 
@@ -10,6 +12,7 @@ Baseado em: Hugging Face Smol Course - Unit 1.2
 https://huggingface.co/learn/smol-course/unit1/2
 """
 
+# region code
 from transformers import pipeline
 
 pipe = pipeline("text-generation", "HuggingFaceTB/SmolLM3-3B", device_map="auto")
@@ -39,3 +42,4 @@ response = pipe(conversation, **generation_config)
 # Imprimir conversa final
 for message in response[0]["generated_text"]:
     print(f"{message['role']}: {message['content']}")
+# endregion code

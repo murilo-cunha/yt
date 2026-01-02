@@ -2,6 +2,8 @@
 # requires-python = ">=3.14"
 # dependencies = [
 #     "transformers>=4.46.0",
+#     "torch>=2.0.0",
+#     "accelerate>=1.12.0",
 # ]
 # ///
 
@@ -10,6 +12,7 @@ Baseado em: Hugging Face Smol Course - Unit 1.2
 https://huggingface.co/learn/smol-course/unit1/2
 """
 
+# region code
 from transformers import AutoTokenizer
 
 tokenizer = AutoTokenizer.from_pretrained("HuggingFaceTB/SmolLM3-3B")
@@ -35,3 +38,4 @@ print(without_prompt)
 print("\n" + "=" * 50 + "\n")
 print("Com generation prompt:")
 print(with_prompt)
+# endregion code

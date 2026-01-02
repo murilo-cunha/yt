@@ -8,6 +8,7 @@ Baseado em: Hugging Face Smol Course - Unit 1.2
 https://huggingface.co/learn/smol-course/unit1/2
 """
 
+# region code
 # Estrutura básica de mensagens
 messages = [
     {
@@ -24,3 +25,4 @@ messages = [
 # Cada mensagem tem:
 # - role: identifica quem está falando
 # - content: o conteúdo da mensagem
+# endregion code

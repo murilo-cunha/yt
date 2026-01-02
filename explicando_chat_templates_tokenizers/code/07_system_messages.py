@@ -8,6 +8,7 @@ Baseado em: Hugging Face Smol Course - Unit 1.2
 https://huggingface.co/learn/smol-course/unit1/2
 """
 
+# region code
 # Mensagem de sistema para assistente profissional
 professional_system = {
     "role": "system",
@@ -25,6 +26,4 @@ creative_system = {
     "role": "system",
     "content": "Você é um assistente de escrita criativa. Ajude os usuários a criar histórias envolventes.",
 }
-
-# Mensagens de sistema definem o comportamento do modelo
-# São a primeira mensagem e influenciam toda a conversa
+# endregion code

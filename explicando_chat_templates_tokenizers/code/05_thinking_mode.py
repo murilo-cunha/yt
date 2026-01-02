@@ -8,6 +8,7 @@ Baseado em: Hugging Face Smol Course - Unit 1.2
 https://huggingface.co/learn/smol-course/unit1/2
 """
 
+# region code
 # Modo padrão - resposta direta
 standard_messages = [
     {"role": "user", "content": "Quanto é 15 × 24?"},
@@ -25,3 +26,4 @@ thinking_messages = [
 
 # O modo thinking permite que o modelo mostre seu raciocínio
 # Útil para tarefas complexas que requerem explicação passo a passo
+# endregion code
