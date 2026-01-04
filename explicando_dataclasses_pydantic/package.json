@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@slidev/theme-apple-basic": "^0.25.1",
+    "slidev-addon-fancy-arrow": "^0.15.1"
+  }
+}
