@@ -37,3 +37,4 @@ formatted_chat = tokenizer.apply_chat_template(
 
 print(formatted_chat)
 # endregion code
+# print(tokenizer.convert_ids_to_tokens(formatted_chat))

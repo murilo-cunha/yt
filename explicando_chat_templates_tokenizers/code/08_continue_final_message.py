@@ -24,11 +24,6 @@ json_messages = [
 
 # Continuar a mensagem final (prefill)
 continue_mode = tokenizer.apply_chat_template(
-    json_messages, tokenize=False, add_generation_prompt=False
-)
-print(continue_mode)
-# Continuar a mensagem final (prefill)
-continue_mode = tokenizer.apply_chat_template(
     json_messages, tokenize=False, continue_final_message=True
 )
 

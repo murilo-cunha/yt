@@ -81,19 +81,11 @@ Os chat templates são a ponte entre esses dois mundos - eles ensinam o modelo a
 
 Entendendo system, user e assistant
 
-<v-click>
-
 - **System**: Define comportamento e personalidade do modelo
 - **User**: Mensagens do usuário/cliente
 - **Assistant**: Respostas geradas pelo modelo
 
-</v-click>
-
-<v-click>
-
 <<< @/code/07_system_messages.py#code {*}{maxHeight:'250px'}
-
-</v-click>
 
 <!--
 Cada papel tem sua função específica:
@@ -130,7 +122,7 @@ Perfeito para começar ou para uso em produção.
 
 Útil para preparação de dados e treinamento
 
-Use `add_generation_prompt=False` quando não quiser gerar uma resposta, mas apenas aplicar o template.
+O pipeline automaticamente transforma mensagens JSON em texto formatado usando chat templates por trás dos planos.
 
 <<< @/code/03_aplicar_template.py#code {*}{maxHeight:'320px'}
 
@@ -205,7 +197,7 @@ Controle avançado de resposta
 
 O parâmetro `continue_final_message=True` faz o modelo **continuar** a última mensagem ao invés de iniciar uma nova.
 
-<<< @/code/08_continue_final_message.py#code {*|13,18}{maxHeight:'315px'}
+<<< @/code/08_continue_final_message.py#code {*|8|13,18}{maxHeight:'315px'}
 
 <!--
 Continue final message é uma técnica avançada de "prefilling" - você começa a resposta do assistente.
@@ -378,7 +370,7 @@ Parâmetros obrigatórios garantem que o modelo forneça todas as informações 
 
 O template injeta definições de ferramentas no system message
 
-<<< @/code/09_function_calling.py#code {*|11-20|22-26|27-30}{maxHeight:'400px'}
+<<< @/code/09_function_calling.py#code {*|6|7|9-10|11-20|22-26|27-30}{maxHeight:'400px'}
 
 <!--
 Quando você passa tools para apply_chat_template, acontece mágica!
@@ -396,7 +388,7 @@ Para casos de uso especializados
 
 Você pode criar **templates customizados** usando sintaxe Jinja2:
 
-```python
+```python {*}{maxHeight:'370px'}
 custom_template = """
 {%- for message in messages %}
     {%- if message['role'] == 'system' %}
