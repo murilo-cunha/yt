@@ -9,3 +9,9 @@ Navegue até o diretório do vídeo que você está assistindo para encontrar os
 ## Canal
 
 Visite o canal: https://www.youtube.com/@muri5511
+
+## Licença
+
+Este projeto está licenciado sob a [Licença Creative Commons Atribuição 4.0 Internacional (CC BY 4.0)](LICENSE).
+
+Você é livre para compartilhar e adaptar este material, desde que dê o crédito apropriado.
