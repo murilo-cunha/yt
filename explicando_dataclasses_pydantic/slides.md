@@ -1,6 +1,5 @@
 ---
 theme: apple-basic
-#background:
 title: Dataclasses & Pydantic
 mdc: true
 addons:
@@ -9,7 +8,7 @@ addons:
 
 <div class="absolute bottom-10">
   <h1>Explicando</h1>
-  <p>Dataclasses & Pydantic</p>
+  <p>Pydantic (Dataclasses & Type Hints)</p>
 </div>
 
 ---
@@ -18,11 +17,15 @@ addons:
 
 Type hints são anotações de tipo no Python
 
+<v-clicks>
+
 - Introduzidos no Python 3.5 (PEP 484)
 - Indicam o tipo esperado de variáveis, parâmetros e retornos
 - **Não são obrigatórios** - Python continua sendo dinamicamente tipado
 - Ferramentas como IDEs e `mypy` usam para análise estática
 - **Não fazem validação em runtime** - são apenas "dicas"
+
+</v-clicks>
 
 ```python {*|1|4-}
 def somar(a: int, b: int) -> int:
@@ -32,7 +35,11 @@ nome: str = "João"
 idade: int = 25
 ```
 
+<v-click>
+
 <carbon-arrow-right/> Type hints são a base para Pydantic e dataclasses
+
+</v-click>
 
 ---
 layout: two-cols
@@ -46,17 +53,30 @@ Python types não te protegem em runtime
 
 Dados vêm bagunçados:
 
+<v-clicks>
+
 - **APIs**: campos inconsistentes, tipos errados
 - **Usuários**: formulários, inputs
 - **Arquivos de configuração / variáveis de ambiente**
 - **LLMs**: texto livre
 
+</v-clicks>
+
+<v-click>
+
 <carbon-arrow-right/> Type hints ajudam ferramentas (IDE, `mypy`), mas **não validam** em runtime.
+
+</v-click>
+
 ::right::
 O que dá errado:
 
+<v-clicks>
+
 - `KeyError`, `TypeError`, bugs silenciosos, casos de borda pouco claros
 - Você também quer garantias sobre os dados (ex: idade é um inteiro, mas também é positivo)
+
+</v-clicks>
 
 <<< @/code/01_problema_runtime.py#code {*|1|2-3|4-6}
 
@@ -68,6 +88,8 @@ layout: two-cols
 
 Pydantic = models + validação usando type annotations
 
+<v-clicks>
+
 - Define um schema usando type annotations do Python
 - Pydantic valida e faz parsing da entrada em runtime
 - Oferece:
@@ -76,13 +98,19 @@ Pydantic = models + validação usando type annotations
   - Serialização limpa (dict/JSON)
   - Suporte de IDE via LSPs
 
+</v-clicks>
+
 ::right::
 
 <br/>
 
+<v-click>
+
 **Fluxo:**
 
 Dados de entrada → `BaseModel` → objeto validado
+
+</v-click>
 
 <<< @/code/02_pydantic_basico.py#code {*|4-6}{maxHeight:'470px',lines:0}
 
@@ -96,16 +124,24 @@ Mesma forma, propósito diferente
 
 **Dataclasses**
 
+<v-clicks>
+
 - Leve, biblioteca padrão
 - Ótimo para objetos internos onde os dados já são confiáveis
 - Sem validação em runtime por padrão
 
+</v-clicks>
+
 **Pydantic**
+
+<v-clicks>
 
 - Validação em runtime + parsing
 - Projetado para dados externos/não confiáveis
 - Ecossistema rico de features (settings, JSON, etc.)
 - `Field` e todas as propriedades úteis que vêm com ele (incluindo `description`)
+
+</v-clicks>
 
 ::right::
 
@@ -121,14 +157,22 @@ Mesma forma, propósito diferente
 
 **Use dataclasses quando:**
 
+<v-clicks>
+
 - Modelos de domínio internos
 - Você controla os dados
 - Dependências mínimas
 
+</v-clicks>
+
 **Use Pydantic quando:**
+
+<v-clicks>
 
 - Fronteiras: APIs, requisições web, config/env, ETL, outputs de LLM
 - Você precisa de tipos garantidos + restrições
+
+</v-clicks>
 
 ---
 
@@ -136,9 +180,13 @@ Mesma forma, propósito diferente
 
 Validação + coerção útil
 
+<v-clicks>
+
 - Converte inputs comuns (`1` → `True`) quando seguro
 - Rejeita inputs inválidos com erros claros
 - Modo strict opcional (seja explícito quando precisar)
+
+</v-clicks>
 
 <<< @/code/04_validacao_coercao.py#code {*|4-7|10-13|*}{maxHeight:'280px',lines:0}
 
@@ -150,12 +198,16 @@ layout: two-cols
 
 Constraints comunicam intenção
 
+<v-clicks>
+
 - Adiciona descrições, padrões, exemplos
 - Constraints:
   - numéricos: `gt`, `ge`, `lt`, `le`
   - strings: `min_length`, `max_length`, `pattern`
   - listas: `min_length`, `max_length`
   - ...
+
+</v-clicks>
 
 ::right::
 
@@ -175,9 +227,13 @@ layout: two-cols
 
 Dados complexos? <carbon-arrow-right/> Componha models
 
+<v-clicks>
+
 - Models podem incluir outros models
 - Ótimo para payloads de API, documentos, estruturas hierárquicas
 - Modelo mental mais simples
+
+</v-clicks>
 
 ::right::
 
@@ -193,12 +249,20 @@ layout: two-cols
 
 Regras customizadas, por exemplo:
 
+<v-clicks>
+
 - Valida relacionamentos (ex: `start_date <= end_date`)
 - Normaliza inputs (remove espaços, força formatos)
 - Podem ser executadas **antes**, **depois**, incluir ou não as validações do Pydantic
 - Podem ser executadas no level dos `Field` or `Model` (caso dependa de vários fields)
 
+</v-clicks>
+
+<v-click>
+
 <carbon-arrow-right/> Mais informações: https://docs.pydantic.dev/latest/concepts/validators/
+
+</v-click>
 
 ::right::
 
@@ -214,9 +278,13 @@ layout: two-cols
 
 De/para dict + JSON
 
+<v-clicks>
+
 - Parse de dict/JSON
 - Export para dict/JSON
 - Útil para APIs, armazenamento, logging
+
+</v-clicks>
 
 ::right::
 
@@ -234,9 +302,13 @@ layout: two-cols
 
 Configuração de variáveis de ambiente
 
+<v-clicks>
+
 - Centraliza configuração
 - Parsing tipado de env vars
 - Evita `os.environ[...]` frágil espalhado pelo código
+
+</v-clicks>
 
 ::right::
 
@@ -250,6 +322,8 @@ layout: two-cols
 
 FastAPI usa Pydantic como sua espinha dorsal de dados
 
+<v-clicks>
+
 - **Validação automática de requisições**
   - Request bodies e query params validados antes do seu endpoint executar
 - **Documentação OpenAPI/Swagger automática**
@@ -259,6 +333,8 @@ FastAPI usa Pydantic como sua espinha dorsal de dados
   - Response models garantem output consistent
 - **Erros se tornam HTTP 422**
   - Clientes recebem feedback estruturado
+
+</v-clicks>
 
 ::right::
 
@@ -317,6 +393,8 @@ class: text-center
 
 <br/>
 
+<v-clicks>
+
 Type hints ≠ validação em runtime
 
 Pydantic transforma annotations em **garantias em runtime**
@@ -325,14 +403,21 @@ Melhor em fronteiras: APIs, config, ETL, e outputs de LLM
 
 Integração com FastAPI é um grande ganho de produtividade
 
+</v-clicks>
+
 ---
+
 # Próximos passos
 
 Onde aprender a seguir
 
+<v-clicks>
+
 - [Documentação oficial](https://docs.pydantic.dev/latest/)
 - [Explore a documentação do FastAPI](https://fastapi.tiangolo.com/pt/)
 - Experimente com LLMs: OpenAI, Anthropic, Gemini, Instructor, Pydantic AI, etc.
+
+</v-clicks>
 
 ---
 layout: center
