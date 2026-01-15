@@ -38,20 +38,21 @@ class Evento(BaseModel):
 
     @field_validator("email_participantes")
     @classmethod
-    def validar_participantes(cls, e: list[str]) -> list[str]:
+    def validar_participantes(cls, emails: list[str]) -> list[str]:
         """Remove duplicatas e normaliza emails"""
-        emails_unicos = set(e)
+        emails_unicos = {e.strip().lower() for e in emails}
         dominios_permitidos = ["example.com", "company.com"]
         dominio_emails = [email.split("@")[-1] for email in emails_unicos]
         if any(d not in dominios_permitidos for d in dominio_emails):
-            raise ValidationError(f"Domínio deve ser um de: {dominios_permitidos}")
-        return [email.strip().lower() for email in emails_unicos]
+            print(set(dominio_emails))
+            raise ValueError(f"Domínio deve ser um de: {dominios_permitidos}")
+        return [email for email in emails_unicos]
 
     @model_validator(mode="after")
     def validar_datas(self):
         """Valida que data_fim >= data_inicio"""
         if self.data_fim < self.data_inicio:
-            raise ValidationError("Data de fim deve ser >= data de início")
+            raise ValueError("Data de fim deve ser >= data de início")
         return self
 
 

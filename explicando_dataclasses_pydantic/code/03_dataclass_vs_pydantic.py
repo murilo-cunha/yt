@@ -30,15 +30,14 @@ class UsuarioPydantic(BaseModel):
 # endregion code
 
 print("=== DATACLASS ===")
-usuario_dc = UsuarioDataclass(nome="Maria", idade="não é um número")
-# usuario_dc = UsuarioDataclass(nome="Maria")
+# usuario_dc = UsuarioDataclass(nome="Maria", idade="não é um número")
+usuario_dc = UsuarioDataclass(nome="Maria")
 print(f"✓ Nome: {usuario_dc.nome}")
 print(f"✓ Idade: {usuario_dc.idade} (tipo: {type(usuario_dc.idade)})")
 
 # print("=== PYDANTIC ===")
 # usuario_pyd = UsuarioPydantic(nome="Maria", idade="trinta")
-# # usuario_pyd = UsuarioPydantic(nome="Maria")
-# # usuario_pyd = UsuarioPydantic(nome="João", idade="30")
-
+# usuario_pyd = UsuarioPydantic(nome="Maria")
+# usuario_pyd = UsuarioPydantic(nome="João", idade="30")
 # print(f"✓ Nome: {usuario_pyd.nome}")
 # print(f"✓ Idade: {usuario_pyd.idade} (tipo: {type(usuario_pyd.idade)})")

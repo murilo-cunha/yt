@@ -23,16 +23,3 @@ usuario = Usuario(nome="Maria", idade=30)
 # usuario = Usuario(nome="Pedro", idade="25")
 print(usuario)
 # endregion code
-
-# def processar_usuario(dados: Usuario) -> str:
-#     nome = dados.nome
-#     idade = dados.idade
-#     if idade < 0:
-#         raise ValueError("Idade não pode ser negativa")
-#     return f"{nome} tem {idade} anos"
-
-# def processar_usuario(dados: dict) -> str:
-#     usuario = Usuario(**dados)
-#     if usuario.idade < 0:
-#         raise ValueError("Idade não pode ser negativa")
-#     return f"{usuario.nome} tem {usuario.idade} anos"

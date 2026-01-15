@@ -38,7 +38,6 @@ usuario = Usuario(
 )
 # usuario = Usuario(nome="A", idade=30, email="a@b.com", tags=["tag"])
 # usuario = Usuario(nome="João", idade=0, email="joao@example.com", tags=["tag"])
-# usuario = Usuario(nome="Ana", idade=25, email="meuemail", tags=["tag"])
-# usuario = Usuario(nome="Carlos", idade=35, email="carlos@example.com", tags=[])
-# usuario = Usuario(nome="Pedro", idade=40, email="pedro@example.com", tags=["da", "um", "like", "no", "video", "pf"])
-print(f"✓ Usuário válido: {usuario.nome}")
+# usuario = Usuario(nome="Pedro", idade=40, email="pedro.com", tags=["da", "um", "like", "no", "video", "pf"])
+
+print(f"✓ Usuário válido: {usuario=}")

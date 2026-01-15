@@ -41,22 +41,21 @@ dados_dict = {
 }
 
 usuario = Usuario(**dados_dict)
-print("=== Objeto criado ===")
-print(f"Nome: {usuario.nome}")
-print(f"Email: {usuario.email}")
 
-# # Exemplo 2: Exportar para dict
-# usuario_dict = usuario.model_dump()
-# print("\n=== Export para dict ===")
-# print(usuario_dict)
-# print(f"Tipo data_cadastro: {type(usuario_dict['data_cadastro'])}")
+# Exemplo 1: Exportar para dict
+usuario_dict = usuario.model_dump()
+# usuario_dict = usuario.model_dump(mode="json")
+print("\n=== Export para dict ===")
+print(usuario_dict)
+print(f"Tipo data_cadastro: {type(usuario_dict['data_cadastro'])}")
 
-# # Exemplo 3: Exportar para JSON
+# # Exemplo 2: Exportar para JSON
 # usuario_json = usuario.model_dump_json(indent=2)
 # print("\n=== Export para JSON ===")
+# print(type(usuario_json))
 # print(usuario_json)
 
-# # Exemplo 4: Criar a partir de JSON string
+# # Exemplo 3: Criar a partir de JSON string
 # json_string = """
 # {
 #     "nome": "João Santos",
@@ -71,10 +70,9 @@ print(f"Email: {usuario.email}")
 # }
 # """
 
-# usuario2 = Usuario.model_validate_json(json_string)
+# usuario_from_json = Usuario.model_validate_json(json_string)
 # print("\n=== Criado a partir de JSON ===")
-# print(f"Nome: {usuario2.nome}")
-# print(f"Idade: {usuario2.idade}")
+# print(f"{usuario_from_json=}")
 
 # # Exemplo 5: Serialização customizada
 # usuario_dict_custom = usuario.model_dump(
@@ -82,10 +80,5 @@ print(f"Email: {usuario.email}")
 #     exclude_none=True,  # exclui valores None
 # )
 # print("\n=== Dict customizado (apenas nome e email) ===")
+# print(type(usuario_dict_custom))
 # print(usuario_dict_custom)
-
-# # Exemplo 6: Mode='json' para tipos serializáveis
-# usuario_dict_json_mode = usuario.model_dump(mode="json")
-# print("\n=== Dict com mode='json' (data como string) ===")
-# print(usuario_dict_json_mode)
-# print(f"Tipo data_cadastro: {type(usuario_dict_json_mode['data_cadastro'])}")
